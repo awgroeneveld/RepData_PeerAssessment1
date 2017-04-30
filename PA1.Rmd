@@ -43,8 +43,8 @@ plot(meanStepsByInterval$interval,
 # and now the max
 maxSteps <- max(meanStepsByInterval$steps)
 maxInterval <- meanStepsByInterval$interval[which.max(meanStepsByInterval$steps)]
-maxHours <- maxInterval %/% 60
-maxMinutes <- maxInterval %% 60
+maxHours <- maxInterval %/% 100
+maxMinutes <- maxInterval %% 100
 maxHours <- formatC(maxHours, width = 2, flag = "0")
 maxMinutes <- formatC(maxMinutes, width=2, flag = "0")
 ```
@@ -96,4 +96,22 @@ xyplot(steps~interval | dayType, data = meanStepsByIntervalAndDayType,
       xlab = 'Interval',
       ylab = 'Number of Steps',
       layout = c(1,2))
+
+# Get summary data on weekdays:
+summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)
+# Get summary data on  on weekends:
+summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)
+
+# Now the moment
+maxIntervalWeekday <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)]
+maxHoursWeekday <- formatC(maxIntervalWeekday %/% 100, width = 2, flag = "0")
+maxMinutesWeekday <- formatC(maxIntervalWeekday %% 100, width=2, flag = "0")
+
+maxIntervalWeekend <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)]
+maxHoursWeekend <- formatC(maxIntervalWeekend %/% 100, width = 2, flag = "0")
+maxMinutesWeekend <- formatC(maxIntervalWeekend %% 100, width=2, flag = "0")
+
 ```
+During weekdays the maximum number of steps occurs at interval #`r maxIntervalWeekday` at `r maxHoursWeekday`:`r maxMinutesWeekday` hours.
+
+During weekend the maximum number of steps occurs at interval #`r maxIntervalWeekend` at `r maxHoursWeekend`:`r maxMinutesWeekend` hours.

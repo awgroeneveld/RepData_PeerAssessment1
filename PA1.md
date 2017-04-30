@@ -51,13 +51,13 @@ plot(meanStepsByInterval$interval,
 # and now the max
 maxSteps <- max(meanStepsByInterval$steps)
 maxInterval <- meanStepsByInterval$interval[which.max(meanStepsByInterval$steps)]
-maxHours <- maxInterval %/% 60
-maxMinutes <- maxInterval %% 60
+maxHours <- maxInterval %/% 100
+maxMinutes <- maxInterval %% 100
 maxHours <- formatC(maxHours, width = 2, flag = "0")
 maxMinutes <- formatC(maxMinutes, width=2, flag = "0")
 ```
 
-The Maximum of 206.1698113 occurs at interval #835 at 13:55 hours.
+The Maximum of 206.1698113 occurs at interval #835 at 08:35 hours.
 
 ## Imputing missing values
 
@@ -128,3 +128,37 @@ xyplot(steps~interval | dayType, data = meanStepsByIntervalAndDayType,
 ```
 
 ![](PA1_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+
+```r
+# Get summary data on weekdays:
+summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.000   2.218  23.970  35.340  51.870 234.100
+```
+
+```r
+# Get summary data on  on weekends:
+summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.000   1.107  32.040  43.080  75.570 175.000
+```
+
+```r
+# Now the moment
+maxIntervalWeekday <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)]
+maxHoursWeekday <- formatC(maxIntervalWeekday %/% 100, width = 2, flag = "0")
+maxMinutesWeekday <- formatC(maxIntervalWeekday %% 100, width=2, flag = "0")
+
+maxIntervalWeekend <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)]
+maxHoursWeekend <- formatC(maxIntervalWeekend %/% 100, width = 2, flag = "0")
+maxMinutesWeekend <- formatC(maxIntervalWeekend %% 100, width=2, flag = "0")
+```
+During weekdays the maximum number of steps occurs at interval #835 at 08:35 hours.
+
+During weekend the maximum number of steps occurs at interval #915 at 09:15 hours.

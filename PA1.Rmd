@@ -101,17 +101,5 @@ xyplot(steps~interval | dayType, data = meanStepsByIntervalAndDayType,
 summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)
 # Get summary data on  on weekends:
 summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)
-
-# Now the moment
-maxIntervalWeekday <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)]
-maxHoursWeekday <- formatC(maxIntervalWeekday %/% 100, width = 2, flag = "0")
-maxMinutesWeekday <- formatC(maxIntervalWeekday %% 100, width=2, flag = "0")
-
-maxIntervalWeekend <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)]
-maxHoursWeekend <- formatC(maxIntervalWeekend %/% 100, width = 2, flag = "0")
-maxMinutesWeekend <- formatC(maxIntervalWeekend %% 100, width=2, flag = "0")
-
 ```
-During weekdays the maximum number of steps occurs at interval #`r maxIntervalWeekday` at `r maxHoursWeekday`:`r maxMinutesWeekday` hours.
-
-During weekend the maximum number of steps occurs at interval #`r maxIntervalWeekend` at `r maxHoursWeekend`:`r maxMinutesWeekend` hours.
+As the graphs show, the activity in the weekend is more evenly spread over the day. Overall activity (mean) is higher in the weekend.

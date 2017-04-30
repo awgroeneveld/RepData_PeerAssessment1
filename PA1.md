@@ -148,17 +148,4 @@ summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="We
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   1.107  32.040  43.080  75.570 175.000
 ```
-
-```r
-# Now the moment
-maxIntervalWeekday <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekday",]$steps)]
-maxHoursWeekday <- formatC(maxIntervalWeekday %/% 100, width = 2, flag = "0")
-maxMinutesWeekday <- formatC(maxIntervalWeekday %% 100, width=2, flag = "0")
-
-maxIntervalWeekend <- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType=="Weekend",]$steps)]
-maxHoursWeekend <- formatC(maxIntervalWeekend %/% 100, width = 2, flag = "0")
-maxMinutesWeekend <- formatC(maxIntervalWeekend %% 100, width=2, flag = "0")
-```
-During weekdays the maximum number of steps occurs at interval #835 at 08:35 hours.
-
-During weekend the maximum number of steps occurs at interval #915 at 09:15 hours.
+As the graphs show, the activity in the weekend is more evenly spread over the day. Overall activity (mean) is higher in the weekend.

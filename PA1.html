@@ -214,16 +214,7 @@ summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType==&qu
 summary(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType==&quot;Weekend&quot;,]$steps)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   1.107  32.040  43.080  75.570 175.000</code></pre>
-<pre class="r"><code># Now the moment
-maxIntervalWeekday &lt;- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType==&quot;Weekday&quot;,]$steps)]
-maxHoursWeekday &lt;- formatC(maxIntervalWeekday %/% 100, width = 2, flag = &quot;0&quot;)
-maxMinutesWeekday &lt;- formatC(maxIntervalWeekday %% 100, width=2, flag = &quot;0&quot;)
-
-maxIntervalWeekend &lt;- meanStepsByIntervalAndDayType$interval[which.max(meanStepsByIntervalAndDayType[meanStepsByIntervalAndDayType$dayType==&quot;Weekend&quot;,]$steps)]
-maxHoursWeekend &lt;- formatC(maxIntervalWeekend %/% 100, width = 2, flag = &quot;0&quot;)
-maxMinutesWeekend &lt;- formatC(maxIntervalWeekend %% 100, width=2, flag = &quot;0&quot;)</code></pre>
-<p>During weekdays the maximum number of steps occurs at interval #835 at 08:35 hours.</p>
-<p>During weekend the maximum number of steps occurs at interval #915 at 09:15 hours.</p>
+<p>As the graphs show, the activity in the weekend is more evenly spread over the day. Overall activity (mean) is higher in the weekend.</p>
 </div>
 
 

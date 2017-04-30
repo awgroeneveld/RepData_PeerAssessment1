@@ -81,7 +81,7 @@ length(missing)
 
 ```r
 imputedActivity <- activity
-# These are dupes, I just want to look at them here and be sure I know what I'm looking at
+# Replace the NA's (impute) with the mean of the interval over all days
 for(i in missing){
   row <- activity[i,]
   act <- meanStepsByInterval[which(meanStepsByInterval$interval==row$interval),]$steps
